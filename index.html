@@ -4,215 +4,746 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZAPCHASTCHI.UZ | Avto ehtiyot qismlar</title>
+<meta name="theme-color" content="#0b0d11">
+<meta name="description" content="ZAPCHASTCHI.UZ — avtomobil akkumulyatorlari va ehtiyot qismlari. Mahsulotlar haqida ma'lumot va buyurtma.">
+<title>ZAPCHASTCHI.UZ — Premium Auto Parts</title>
+
 <style>
+:root{
+ --bg:#0b0d11;
+ --panel:#141820;
+ --panel2:#1c222c;
+ --red:#ed3038;
+ --white:#fff;
+ --muted:#a4abb7;
+ --line:#2b303a;
+}
 *{box-sizing:border-box}
-body{margin:0;background:#0c1018;color:white;font-family:Arial,sans-serif}
-header{background:#080b11;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-.logo{font-size:25px;font-weight:bold;color:#ff3939}
-header a{color:white;text-decoration:none}
-.hero{padding:75px 20px;text-align:center;background:linear-gradient(130deg,#26354a,#111722)}
-.hero h1{font-size:38px;margin:0 0 15px}
-.hero p{color:#d0d5df;font-size:18px}
-.btn{display:inline-block;background:#f23838;color:white;padding:14px 25px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:15px}
-h2{text-align:center;margin:40px 0 25px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:20px 5%}
-.card{background:#1b2432;border:1px solid #303b4c;border-radius:14px;padding:25px;text-align:center}
-.icon{font-size:55px}
-.card h3{color:#ff5555}
-.card p{color:#c5ccd7;line-height:1.5}
-.card a{color:white;text-decoration:none;background:#e93333;padding:11px 18px;border-radius:7px;display:inline-block;margin-top:10px}
-.contact{text-align:center;background:#151d29;padding:35px 20px;margin-top:30px}
-footer{text-align:center;padding:25px;color:#9ca6b5}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ background:var(--bg);
+ color:white;
+ font-family:Arial,Helvetica,sans-serif;
+}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+.container{width:min(1160px,92%);margin:auto}
+.topbar{
+ background:#090b0e;
+ border-bottom:1px solid #242830;
+ padding:10px 0;
+ color:#b9c0ca;
+ font-size:12px;
+}
+.topinner{
+ display:flex;
+ justify-content:space-between;
+ gap:15px;
+ flex-wrap:wrap;
+}
+header{
+ position:sticky;
+ top:0;
+ z-index:10;
+ background:rgba(11,13,17,.96);
+ backdrop-filter:blur(15px);
+ border-bottom:1px solid var(--line);
+}
+.nav{
+ min-height:76px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:20px;
+}
+.logo{
+ font-size:24px;
+ font-weight:900;
+ letter-spacing:-1px;
+}
+.logo span{color:var(--red)}
+.navlinks{
+ display:flex;
+ gap:25px;
+ color:#d1d5dd;
+ font-size:14px;
+}
+.navlinks a:hover{color:var(--red)}
+.navright{display:flex;gap:10px;align-items:center}
+.btn{
+ display:inline-flex;
+ justify-content:center;
+ align-items:center;
+ gap:8px;
+ padding:13px 18px;
+ border:0;
+ border-radius:7px;
+ background:var(--red);
+ color:white;
+ font-weight:bold;
+ transition:.2s;
+}
+.btn:hover{background:#ff454d;transform:translateY(-2px)}
+.btn-outline{
+ background:transparent;
+ border:1px solid #505866;
+}
+.btn-outline:hover{background:#252b35}
+.hero{
+ padding:75px 0 65px;
+ background:
+ radial-gradient(ellipse at 85% 40%,rgba(237,48,56,.20),transparent 38%),
+ linear-gradient(110deg,#111720,#0b0d11);
+ overflow:hidden;
+}
+.hero-grid{
+ display:grid;
+ grid-template-columns:1.05fr .95fr;
+ gap:35px;
+ align-items:center;
+}
+.eyebrow{
+ color:#ff6268;
+ font-size:12px;
+ font-weight:bold;
+ letter-spacing:3px;
+ text-transform:uppercase;
+}
+.hero h1{
+ font-size:clamp(36px,5vw,61px);
+ line-height:1.06;
+ margin:18px 0;
+ letter-spacing:-2px;
+}
+.hero h1 span{color:var(--red)}
+.hero p{
+ color:#b6bdc8;
+ font-size:17px;
+ line-height:1.8;
+ max-width:530px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.hero-art{
+ min-height:330px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ position:relative;
+}
+.hero-art:before{
+ content:"";
+ position:absolute;
+ width:310px;height:310px;
+ background:radial-gradient(circle,rgba(237,48,56,.3),transparent 70%);
+}
+.battery{
+ position:relative;
+ width:260px;
+ height:170px;
+ background:linear-gradient(145deg,#303844,#11151b);
+ border:2px solid #68717d;
+ border-radius:18px;
+ box-shadow:0 25px 65px #000;
+ transform:perspective(500px) rotateY(-12deg) rotateX(5deg);
+}
+.battery:before{
+ content:"";
+ position:absolute;
+ width:205px;height:17px;
+ top:-13px;left:25px;
+ background:#59616b;
+ border-radius:6px 6px 2px 2px;
+}
+.battery:after{
+ content:"";
+ position:absolute;
+ top:-19px;left:45px;
+ width:18px;height:9px;
+ background:#d4d8de;
+ box-shadow:145px 0 #d4d8de;
+ border-radius:3px;
+}
+.battery-label{
+ position:absolute;
+ inset:38px 22px 25px;
+ border-radius:8px;
+ background:linear-gradient(130deg,#c71e28,#761019);
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ text-align:center;
+ border:1px solid #ff777d;
+}
+.battery-label b{font-size:30px;letter-spacing:2px}
+.battery-label span{font-size:11px;letter-spacing:3px;margin-top:7px}
+.hero-stats{
+ display:flex;gap:28px;flex-wrap:wrap;margin-top:35px;
+}
+.stat strong{display:block;font-size:21px}
+.stat small{color:var(--muted);font-size:12px}
+.section{padding:65px 0}
+.section-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:end;
+ gap:20px;
+ margin-bottom:28px;
+}
+.section-head h2{font-size:30px;margin:8px 0}
+.section-head p{color:var(--muted);margin:0}
+.categories{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:17px;
+}
+.category{
+ background:linear-gradient(145deg,#1b222d,#11151b);
+ border:1px solid var(--line);
+ border-radius:12px;
+ padding:24px;
+ min-height:160px;
+ transition:.2s;
+}
+.category:hover{border-color:var(--red);transform:translateY(-4px)}
+.category .emoji{font-size:38px}
+.category h3{margin:15px 0 8px}
+.category p{color:var(--muted);font-size:13px;line-height:1.6}
+.catalog-tools{
+ display:flex;
+ gap:12px;
+ flex-wrap:wrap;
+ margin-bottom:25px;
+}
+.search{
+ flex:1;
+ min-width:210px;
+ padding:14px 16px;
+ background:#171c25;
+ border:1px solid var(--line);
+ border-radius:8px;
+ color:white;
+ outline:none;
+}
+.search:focus{border-color:var(--red)}
+.filter{
+ padding:12px 17px;
+ background:#171c25;
+ color:white;
+ border:1px solid var(--line);
+ border-radius:8px;
+}
+.products{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:18px;
+}
+.product{
+ background:var(--panel);
+ border:1px solid var(--line);
+ border-radius:12px;
+ overflow:hidden;
+ transition:.2s;
+}
+.product:hover{transform:translateY(-4px);border-color:#555}
+.product-visual{
+ height:190px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ background:
+ radial-gradient(circle at center,rgba(237,48,56,.16),transparent 65%),
+ linear-gradient(145deg,#202733,#11151b);
+ position:relative;
+ overflow:hidden;
+}
+.product-visual .emoji{
+ font-size:88px;
+ filter:drop-shadow(0 15px 12px #0008);
+}
+.product-tag{
+ position:absolute;
+ top:13px;left:13px;
+ background:#a51e28;
+ border-radius:4px;
+ padding:6px 9px;
+ font-size:10px;
+ font-weight:bold;
+}
+.product-info{padding:18px}
+.product-info h3{font-size:17px;margin:0 0 9px}
+.product-info p{font-size:13px;color:var(--muted);line-height:1.6;min-height:40px}
+.price{font-weight:bold;color:#ff6268;font-size:15px}
+.product-actions{display:flex;gap:8px;margin-top:16px}
+.product-actions button{flex:1;font-size:12px;padding:11px 8px}
+.secondary{
+ background:#29313d;
+ color:white;
+ border:1px solid #414957;
+ border-radius:7px;
+}
+.empty{
+ grid-column:1/-1;
+ padding:35px;
+ text-align:center;
+ color:var(--muted);
+}
+.about{
+ background:#141922;
+ border-top:1px solid var(--line);
+ border-bottom:1px solid var(--line);
+}
+.about-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:35px;
+ align-items:center;
+}
+.about h2{font-size:32px}
+.about p{color:#b7bfca;line-height:1.8}
+.about-list{display:grid;gap:14px}
+.about-item{
+ padding:16px;
+ background:#202733;
+ border-radius:8px;
+}
+.about-item b{display:block;margin-bottom:5px}
+.about-item span{color:var(--muted);font-size:13px}
+.cart-box{
+ background:var(--panel);
+ border:1px solid var(--line);
+ border-radius:12px;
+ padding:25px;
+}
+.cart-row{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ padding:13px 0;
+ border-bottom:1px solid var(--line);
+}
+.cart-row button{
+ background:none;color:#ff656b;border:0;
+}
+.cart-total{padding:20px 0;font-size:18px;font-weight:bold}
+.contact{
+ background:linear-gradient(120deg,#821820,#251218);
+ padding:50px 0;
+ text-align:center;
+}
+.contact h2{font-size:32px}
+.contact p{color:#f2d9da;line-height:1.7}
+.contact-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.contact .btn-outline{border-color:#e6a1a5}
+footer{
+ padding:35px 0;
+ background:#080a0e;
+ color:#a5adb9;
+ font-size:13px;
+}
+.footer-grid{
+ display:grid;
+ grid-template-columns:2fr 1fr 1fr;
+ gap:25px;
+}
+footer h3{color:white}
+footer a{display:block;margin:10px 0}
+footer a:hover{color:white}
+.copyright{
+ border-top:1px solid #282d35;
+ margin-top:25px;
+ padding-top:20px;
+}
+.mobile-menu{display:none}
+@media(max-width:760px){
+ .nav{flex-wrap:wrap;padding:15px 0}
+ .navlinks{order:3;width:100%;justify-content:space-between;gap:8px;font-size:12px}
+ .navright .btn{padding:10px;font-size:12px}
+ .hero{padding:50px 0}
+ .hero-grid,.about-grid{grid-template-columns:1fr}
+ .hero-art{min-height:240px}
+ .battery{transform:scale(.8)}
+ .categories{grid-template-columns:1fr}
+ .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .product-visual{height:135px}
+ .product-visual .emoji{font-size:65px}
+ .product-info{padding:12px}
+ .product-info h3{font-size:14px}
+ .product-info p{font-size:12px}
+ .product-actions{flex-direction:column}
+ .section{padding:45px 0}
+ .section-head h2{font-size:24px}
+ .footer-grid{grid-template-columns:1fr}
+}
+@media(max-width:390px){
+ .products{grid-template-columns:1fr}
+}
 </style>
 </head>
+
 <body>
 
-<header>
-<div class="logo">ZAPCHASTCHI.UZ</div>
-<a href="tel:+998507048061">☎ +998 50 704 80 61</a>
-</header>
-
-<section class="hero">
-<h1>AVTOMOBILINGIZ UCHUN ISHONCHLI TANLOV!</h1>
-<p>Akkumulyatorlar va avtomobil ehtiyot qismlari</p>
-<a class="btn" href="tel:+998507048061">HOZIROQ BOG‘LANING</a>
-</section>
-
-<h2>MAHSULOTLARIMIZ</h2>
-
-<section class="products">
-<div class="card">
-<div class="icon">🔋</div>
-<h3>AKKUMULYATORLAR</h3>
-<p>Avtomobilingiz uchun sifatli akkumulyatorlar.</p>
-<a href="tel:+998507048061">Buyurtma berish</a>
+<div class="topbar">
+ <div class="container topinner">
+  <span>Avtomobil ehtiyot qismlari va akkumulyatorlar</span>
+  <span>☎ +998 50 704 80 61</span>
+ </div>
 </div>
-
-<div class="card">
-<div class="icon">🚗</div>
-<h3>AVTO EHTIYOT QISMLAR</h3>
-<p>Avtomobilingiz uchun kerakli ehtiyot qismlar.</p>
-<a href="tel:+998507048061">Buyurtma berish</a>
-</div>
-
-<div class="card">
-<div class="icon">⚙️</div>
-<h3>AVTO AKSESSUARLAR</h3>
-<p>Avtomobil uchun foydali qo‘shimcha mahsulotlar.</p>
-<a href="tel:+998507048061">Buyurtma berish</a>
-</div>
-</section>
-
-<section class="contact">
-<h2>BIZ BILAN BOG‘LANING</h2>
-<p>Telefon: +998 50 704 80 61</p>
-<a class="btn" href="tel:+998507048061">QO‘NG‘IROQ QILISH</a>
-</section>
-
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ZAPCHASTCHI.UZ</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;background:#10141c;color:white;font-family:Arial}
-header{background:#080b11;padding:20px;text-align:center}
-.logo{color:#ff3939;font-size:27px;font-weight:bold}
-.hero{text-align:center;padding:55px 15px;background:linear-gradient(130deg,#293b50,#10141c)}
-.hero h1{font-size:30px}
-button,.btn{border:0;background:#ed3535;color:white;padding:12px 18px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-block;margin:5px}
-.search{display:block;width:90%;max-width:500px;margin:25px auto;padding:15px;border-radius:8px;border:0;font-size:16px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px;padding:20px}
-.card{background:#202a39;padding:20px;border-radius:13px;text-align:center}
-.icon{font-size:55px}
-.card h3{color:#ff5555}
-.card p{color:#ddd}
-.price{font-weight:bold;color:#ffd166}
-.cart{margin:20px;padding:20px;background:#202a39;border-radius:12px}
-.contact{text-align:center;padding:30px;background:#171f2c}
-footer{text-align:center;padding:20px;color:#aaa}
-</style>
-</head>
-<body>
 
 <header>
-<div class="logo">ZAPCHASTCHI.UZ</div>
-<p>Avtomobilingiz uchun ishonchli tanlov</p>
+ <div class="container nav">
+  <a class="logo" href="#">ZAPCHASTCHI<span>.UZ</span></a>
+  <nav class="navlinks">
+   <a href="#home">Bosh sahifa</a>
+   <a href="#categories">Kategoriyalar</a>
+   <a href="#catalog">Mahsulotlar</a>
+   <a href="#about">Biz haqimizda</a>
+   <a href="#contact">Aloqa</a>
+  </nav>
+  <div class="navright">
+   <a class="btn" href="#cart">🛒 Savatcha <span id="cartCount">0</span></a>
+  </div>
+ </div>
 </header>
 
-<section class="hero">
-<h1>AVTO EHTIYOT QISMLAR OLAMI</h1>
-<p>Akkumulyatorlar va avtomobil ehtiyot qismlari</p>
-<a class="btn" href="tel:+998507048061">☎ Qo‘ng‘iroq qilish</a>
+<main>
+
+<section class="hero" id="home">
+ <div class="container hero-grid">
+  <div>
+   <div class="eyebrow">ZAPCHASTCHI.UZ • AUTO PARTS</div>
+   <h1>AVTOMOBILINGIZ UCHUN <span>ISHONCHLI TANLOV</span></h1>
+   <p>
+    Akkumulyatorlar va avtomobil ehtiyot qismlarini
+    topish uchun qulay manzil. Mahsulotlarni ko‘ring,
+    ma'lumot oling va biz bilan bog‘laning.
+   </p>
+   <div class="hero-actions">
+    <a class="btn" href="#catalog">Mahsulotlarni ko‘rish →</a>
+    <a class="btn btn-outline" href="tel:+998507048061">☎ Bog‘lanish</a>
+   </div>
+   <div class="hero-stats">
+    <div class="stat"><strong>01</strong><small>Mahsulot katalogi</small></div>
+    <div class="stat"><strong>02</strong><small>Qulay buyurtma</small></div>
+    <div class="stat"><strong>03</strong><small>To‘g‘ridan-to‘g‘ri aloqa</small></div>
+   </div>
+  </div>
+  <div class="hero-art">
+   <div class="battery">
+    <div class="battery-label">
+     <b>KAYNAR</b>
+     <span>AUTOMOTIVE BATTERY</span>
+    </div>
+   </div>
+  </div>
+ </div>
 </section>
 
-<input class="search" id="search"
-placeholder="🔍 Mahsulot qidirish..."
-oninput="searchProducts()">
-
-<h2 style="text-align:center">MAHSULOTLAR</h2>
-
-<section class="products" id="products">
-
-<div class="card" data-name="KAYNAR akkumulyator">
-<div class="icon">🔋</div>
-<h3>KAYNAR AKKUMULYATOR</h3>
-<p>Avtomobil akkumulyatorlari</p>
-<p class="price">Narxini so‘rang</p>
-<button onclick="addCart('KAYNAR akkumulyator')">Savatchaga qo‘shish</button>
-</div>
-
-<div class="card" data-name="Avto ehtiyot qismlar">
-<div class="icon">⚙️</div>
-<h3>AVTO EHTIYOT QISMLAR</h3>
-<p>Turli avtomobil ehtiyot qismlari</p>
-<p class="price">Narxini so‘rang</p>
-<button onclick="addCart('Avto ehtiyot qismlar')">Savatchaga qo‘shish</button>
-</div>
-
-<div class="card" data-name="Avto aksessuarlar">
-<div class="icon">🚘</div>
-<h3>AVTO AKSESSUARLAR</h3>
-<p>Avtomobil uchun aksessuarlar</p>
-<p class="price">Narxini so‘rang</p>
-<button onclick="addCart('Avto aksessuarlar')">Savatchaga qo‘shish</button>
-</div>
-
+<section class="section" id="categories">
+ <div class="container">
+  <div class="section-head">
+   <div>
+    <div class="eyebrow">KATEGORIYALAR</div>
+    <h2>Mahsulot yo‘nalishlari</h2>
+    <p>Kerakli bo‘limni tanlang</p>
+   </div>
+  </div>
+  <div class="categories">
+   <a class="category" href="#catalog" onclick="setFilter('battery')">
+    <div class="emoji">🔋</div>
+    <h3>Akkumulyatorlar</h3>
+    <p>KAYNAR va boshqa avtomobil akkumulyatorlari.</p>
+   </a>
+   <a class="category" href="#catalog" onclick="setFilter('parts')">
+    <div class="emoji">⚙️</div>
+    <h3>Avto ehtiyot qismlar</h3>
+    <p>Avtomobillar uchun ehtiyot qismlar katalogi.</p>
+   </a>
+   <a class="category" href="#catalog" onclick="setFilter('accessory')">
+    <div class="emoji">🚘</div>
+    <h3>Avto aksessuarlar</h3>
+    <p>Avtomobil uchun qo‘shimcha mahsulotlar.</p>
+   </a>
+  </div>
+ </div>
 </section>
 
-<section class="cart">
-<h2>🛒 SAVATCHA</h2>
-<div id="cart">Savatcha hozircha bo‘sh.</div>
-<button onclick="sendOrder()">Telegram orqali buyurtma</button>
-<button onclick="clearCart()">Savatchani tozalash</button>
+<section class="section" id="catalog">
+ <div class="container">
+  <div class="section-head">
+   <div>
+    <div class="eyebrow">ONLAYN KATALOG</div>
+    <h2>Mahsulotlar</h2>
+    <p>Mahsulotni tanlang va narxini so‘rang</p>
+   </div>
+  </div>
+
+  <div class="catalog-tools">
+   <input class="search" id="search" placeholder="🔍 Mahsulot nomini yozing..." oninput="renderProducts()">
+   <select class="filter" id="filter" onchange="renderProducts()">
+    <option value="all">Barcha kategoriyalar</option>
+    <option value="battery">Akkumulyatorlar</option>
+    <option value="parts">Ehtiyot qismlar</option>
+    <option value="accessory">Aksessuarlar</option>
+   </select>
+  </div>
+
+  <div class="products" id="products"></div>
+ </div>
 </section>
 
-<section class="contact">
-<h2>BIZ BILAN BOG‘LANING</h2>
-<p>☎ +998 50 704 80 61</p>
-<a class="btn" href="https://t.me/ilyosbek4028" target="_blank">Telegram</a>
-<a class="btn" href="https://www.instagram.com/zapchastchi.uz/" target="_blank">Instagram</a>
+<section class="section about" id="about">
+ <div class="container about-grid">
+  <div>
+   <div class="eyebrow">BIZ HAQIMIZDA</div>
+   <h2>ZAPCHASTCHI.UZ — avtomobilingiz uchun kerakli mahsulotlar</h2>
+   <p>
+    Biz avtomobil akkumulyatorlari va ehtiyot qismlarini
+    mijozlarga qulay tarzda taqdim etishga yo‘naltirilganmiz.
+    Saytimiz orqali mahsulotlarni ko‘rishingiz va narxi,
+    mavjudligi haqida bizdan ma'lumot olishingiz mumkin.
+   </p>
+   <a class="btn" href="https://t.me/ilyosbek4028">Biz bilan bog‘laning</a>
+  </div>
+  <div class="about-list">
+   <div class="about-item">
+    <b>✓ Mahsulotlar katalogi</b>
+    <span>Kerakli mahsulotni qulay topish imkoniyati.</span>
+   </div>
+   <div class="about-item">
+    <b>✓ Bevosita aloqa</b>
+    <span>Telefon yoki Telegram orqali murojaat qilish.</span>
+   </div>
+   <div class="about-item">
+    <b>✓ Buyurtma so‘rovi</b>
+    <span>Tanlangan mahsulotlar ro‘yxatini yuborish.</span>
+   </div>
+   <div class="about-item">
+    <b>✓ Mahsulot haqida ma'lumot</b>
+    <span>Narx va mavjudlikni sotuvchidan aniqlash.</span>
+   </div>
+  </div>
+ </div>
 </section>
+
+<section class="section" id="cart">
+ <div class="container">
+  <div class="section-head">
+   <div>
+    <div class="eyebrow">BUYURTMA</div>
+    <h2>Sizning savatchangiz</h2>
+    <p>Tanlangan mahsulotlaringiz shu yerda ko‘rinadi</p>
+   </div>
+  </div>
+  <div class="cart-box">
+   <div id="cartItems">Savatcha hozircha bo‘sh.</div>
+   <div class="cart-total" id="cartTotal">Mahsulotlar: 0 ta</div>
+   <button class="btn" onclick="sendOrder()">Telegram orqali buyurtma →</button>
+   <button class="btn btn-outline" onclick="clearCart()">Savatchani tozalash</button>
+   <p style="font-size:12px;color:#9da6b4;line-height:1.6">
+    Eslatma: narx va mavjudlik buyurtma yuborilgach alohida aniqlashtiriladi.
+   </p>
+  </div>
+ </div>
+</section>
+
+<section class="contact" id="contact">
+ <div class="container">
+  <div class="eyebrow">ALOQA</div>
+  <h2>Biz bilan bog‘laning</h2>
+  <p>Mahsulotlar, narxlar va buyurtmalar bo‘yicha bizga murojaat qiling.</p>
+  <div class="contact-actions">
+   <a class="btn" href="tel:+998507048061">☎ +998 50 704 80 61</a>
+   <a class="btn btn-outline" href="https://t.me/ilyosbek4028">✈ Telegram</a>
+   <a class="btn btn-outline" href="https://www.instagram.com/zapchastchi.uz/" target="_blank">◎ Instagram</a>
+  </div>
+ </div>
+</section>
+
+</main>
 
 <footer>
-<p>© 2026 ZAPCHASTCHI.UZ</p>
-<p>Sifat va ishonch!</p>
+ <div class="container">
+  <div class="footer-grid">
+   <div>
+    <div class="logo">ZAPCHASTCHI<span>.UZ</span></div>
+    <p>Avtomobil akkumulyatorlari va ehtiyot qismlari.</p>
+   </div>
+   <div>
+    <h3>Bo‘limlar</h3>
+    <a href="#home">Bosh sahifa</a>
+    <a href="#catalog">Mahsulotlar</a>
+    <a href="#about">Biz haqimizda</a>
+   </div>
+   <div>
+    <h3>Aloqa</h3>
+    <a href="tel:+998507048061">+998 50 704 80 61</a>
+    <a href="https://t.me/ilyosbek4028">Telegram</a>
+    <a href="https://www.instagram.com/zapchastchi.uz/">Instagram</a>
+   </div>
+  </div>
+  <div class="copyright">© 2026 ZAPCHASTCHI.UZ. Barcha huquqlar himoyalangan.</div>
+ </div>
 </footer>
 
 <script>
+const productsData=[
+ {
+  id:1,name:"KAYNAR akkumulyatorlari",
+  category:"battery",emoji:"🔋",
+  description:"KAYNAR avtomobil akkumulyatorlari. Model, sig‘im va narxni aniqlashtiring.",
+  tag:"AKKUMULYATOR"
+ },
+ {
+  id:2,name:"Avtomobil akkumulyatori",
+  category:"battery",emoji:"🔋",
+  description:"Turli avtomobillar uchun akkumulyatorlar. Mos modelni so‘rang.",
+  tag:"BATTERY"
+ },
+ {
+  id:3,name:"Dvigatel ehtiyot qismlari",
+  category:"parts",emoji:"⚙️",
+  description:"Dvigatel uchun ehtiyot qismlar. Kerakli detal nomini yuboring.",
+  tag:"EHTIYOT QISM"
+ },
+ {
+  id:4,name:"Filtrlar va sarf materiallari",
+  category:"parts",emoji:"🛠️",
+  description:"Avtomobilga mos filtr va boshqa sarf materiallari.",
+  tag:"EHTIYOT QISM"
+ },
+ {
+  id:5,name:"Avtomobil aksessuarlari",
+  category:"accessory",emoji:"🚘",
+  description:"Avtomobil uchun qo‘shimcha aksessuarlar.",
+  tag:"AKSESSUAR"
+ },
+ {
+  id:6,name:"Elektr jihozlari",
+  category:"parts",emoji:"🔧",
+  description:"Avtomobil elektr tizimi uchun ehtiyot qismlar.",
+  tag:"EHTIYOT QISM"
+ }
+];
+
 let basket=[];
 
-function addCart(name){
-basket.push(name);
-showCart();
+function renderProducts(){
+ const query=document.getElementById("search").value.toLowerCase();
+ const filter=document.getElementById("filter").value;
+ const list=productsData.filter(p=>
+  p.name.toLowerCase().includes(query) &&
+  (filter==="all"||p.category===filter)
+ );
+ const area=document.getElementById("products");
+ if(!list.length){
+  area.innerHTML='<div class="empty">Mos mahsulot topilmadi.</div>';
+  return;
+ }
+ area.innerHTML=list.map(p=>`
+  <article class="product">
+   <div class="product-visual">
+    <span class="product-tag">${p.tag}</span>
+    <span class="emoji">${p.emoji}</span>
+   </div>
+   <div class="product-info">
+    <h3>${p.name}</h3>
+    <p>${p.description}</p>
+    <div class="price">Narxini so‘rang</div>
+    <div class="product-actions">
+     <button class="btn" onclick="addCart(${p.id})">＋ Savatchaga</button>
+     <button class="secondary" onclick="askProduct(${p.id})">Ma'lumot</button>
+    </div>
+   </div>
+  </article>
+ `).join("");
 }
 
-function showCart(){
-let area=document.getElementById('cart');
-if(basket.length===0){
-area.innerHTML='Savatcha hozircha bo‘sh.';
-return;
+function addCart(id){
+ const p=productsData.find(x=>x.id===id);
+ const found=basket.find(x=>x.id===id);
+ if(found){found.qty++}
+ else{basket.push({...p,qty:1})}
+ renderCart();
 }
-area.innerHTML=basket.map((item,i)=>
-'<p>'+(i+1)+'. '+item+'</p>'
-).join('')+'<b>Jami mahsulotlar: '+basket.length+'</b>';
+
+function removeItem(id){
+ basket=basket.filter(x=>x.id!==id);
+ renderCart();
+}
+
+function changeQty(id,change){
+ const p=basket.find(x=>x.id===id);
+ if(!p)return;
+ p.qty+=change;
+ if(p.qty<=0)removeItem(id);
+ else renderCart();
+}
+
+function renderCart(){
+ document.getElementById("cartCount").textContent=
+ basket.reduce((s,p)=>s+p.qty,0);
+ const area=document.getElementById("cartItems");
+ if(!basket.length){
+  area.textContent="Savatcha hozircha bo‘sh.";
+ }else{
+  area.innerHTML=basket.map(p=>`
+   <div class="cart-row">
+    <div><b>${p.name}</b><br>
+    <small style="color:#a4abb7">Miqdori: ${p.qty}</small></div>
+    <div>
+     <button onclick="changeQty(${p.id},-1)">−</button>
+     <button onclick="changeQty(${p.id},1)">＋</button>
+     <button onclick="removeItem(${p.id})">O‘chirish</button>
+    </div>
+   </div>
+  `).join("");
+ }
+ document.getElementById("cartTotal").textContent=
+ "Mahsulotlar: "+basket.reduce((s,p)=>s+p.qty,0)+" ta";
 }
 
 function clearCart(){
-basket=[];
-showCart();
+ basket=[];
+ renderCart();
 }
 
-function searchProducts(){
-let q=document.getElementById('search').value.toLowerCase();
-document.querySelectorAll('.card').forEach(card=>{
-card.style.display=card.dataset.name.toLowerCase().includes(q)?'block':'none';
-});
+function orderText(){
+ let msg="Assalomu alaykum! ZAPCHASTCHI.UZ saytidan buyurtma so‘rovi:%0A%0A";
+ basket.forEach((p,i)=>{
+  msg+=(i+1)+". "+encodeURIComponent(p.name)+
+  " — "+p.qty+" dona%0A";
+ });
+ msg+="%0AIltimos, mahsulotlar narxi va mavjudligini ma'lum qiling.";
+ return msg;
 }
 
 function sendOrder(){
-if(basket.length===0){
-alert('Avval mahsulot tanlang!');
-return;
+ if(!basket.length){
+  alert("Avval savatchaga mahsulot qo‘shing.");
+  return;
+ }
+ const url="https://t.me/ilyosbek4028?text="+orderText();
+ window.open(url,"_blank");
 }
-let message='Assalomu alaykum! ZAPCHASTCHI.UZ saytidan buyurtma:%0A';
-basket.forEach((item,i)=>{
-message+='%0A'+(i+1)+'. '+encodeURIComponent(item);
-});
-message+='%0A%0AIltimos, narxini va mavjudligini ayting.';
-window.open('https://t.me/ilyosbek4028?text='+message,'_blank');
+
+function askProduct(id){
+ const p=productsData.find(x=>x.id===id);
+ const msg="Assalomu alaykum! "+p.name+
+ " haqida ma'lumot, narx va mavjudligini bilmoqchiman.";
+ window.open("https://t.me/ilyosbek4028?text="+encodeURIComponent(msg),"_blank");
 }
+
+function setFilter(category){
+ document.getElementById("filter").value=category;
+ renderProducts();
+}
+
+renderProducts();
+renderCart();
 </script>
-</body>
-</html>
-
-<footer>
-<p>© 2026 ZAPCHASTCHI.UZ</p>
-<p>Sifat va ishonch — bizning ustuvorligimiz!</p>
-</footer>
-
 </body>
 </html>
