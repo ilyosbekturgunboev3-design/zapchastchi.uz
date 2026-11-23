@@ -70,6 +70,145 @@ footer{text-align:center;padding:25px;color:#9ca6b5}
 <a class="btn" href="tel:+998507048061">QO‘NG‘IROQ QILISH</a>
 </section>
 
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZAPCHASTCHI.UZ</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#10141c;color:white;font-family:Arial}
+header{background:#080b11;padding:20px;text-align:center}
+.logo{color:#ff3939;font-size:27px;font-weight:bold}
+.hero{text-align:center;padding:55px 15px;background:linear-gradient(130deg,#293b50,#10141c)}
+.hero h1{font-size:30px}
+button,.btn{border:0;background:#ed3535;color:white;padding:12px 18px;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-block;margin:5px}
+.search{display:block;width:90%;max-width:500px;margin:25px auto;padding:15px;border-radius:8px;border:0;font-size:16px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px;padding:20px}
+.card{background:#202a39;padding:20px;border-radius:13px;text-align:center}
+.icon{font-size:55px}
+.card h3{color:#ff5555}
+.card p{color:#ddd}
+.price{font-weight:bold;color:#ffd166}
+.cart{margin:20px;padding:20px;background:#202a39;border-radius:12px}
+.contact{text-align:center;padding:30px;background:#171f2c}
+footer{text-align:center;padding:20px;color:#aaa}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">ZAPCHASTCHI.UZ</div>
+<p>Avtomobilingiz uchun ishonchli tanlov</p>
+</header>
+
+<section class="hero">
+<h1>AVTO EHTIYOT QISMLAR OLAMI</h1>
+<p>Akkumulyatorlar va avtomobil ehtiyot qismlari</p>
+<a class="btn" href="tel:+998507048061">☎ Qo‘ng‘iroq qilish</a>
+</section>
+
+<input class="search" id="search"
+placeholder="🔍 Mahsulot qidirish..."
+oninput="searchProducts()">
+
+<h2 style="text-align:center">MAHSULOTLAR</h2>
+
+<section class="products" id="products">
+
+<div class="card" data-name="KAYNAR akkumulyator">
+<div class="icon">🔋</div>
+<h3>KAYNAR AKKUMULYATOR</h3>
+<p>Avtomobil akkumulyatorlari</p>
+<p class="price">Narxini so‘rang</p>
+<button onclick="addCart('KAYNAR akkumulyator')">Savatchaga qo‘shish</button>
+</div>
+
+<div class="card" data-name="Avto ehtiyot qismlar">
+<div class="icon">⚙️</div>
+<h3>AVTO EHTIYOT QISMLAR</h3>
+<p>Turli avtomobil ehtiyot qismlari</p>
+<p class="price">Narxini so‘rang</p>
+<button onclick="addCart('Avto ehtiyot qismlar')">Savatchaga qo‘shish</button>
+</div>
+
+<div class="card" data-name="Avto aksessuarlar">
+<div class="icon">🚘</div>
+<h3>AVTO AKSESSUARLAR</h3>
+<p>Avtomobil uchun aksessuarlar</p>
+<p class="price">Narxini so‘rang</p>
+<button onclick="addCart('Avto aksessuarlar')">Savatchaga qo‘shish</button>
+</div>
+
+</section>
+
+<section class="cart">
+<h2>🛒 SAVATCHA</h2>
+<div id="cart">Savatcha hozircha bo‘sh.</div>
+<button onclick="sendOrder()">Telegram orqali buyurtma</button>
+<button onclick="clearCart()">Savatchani tozalash</button>
+</section>
+
+<section class="contact">
+<h2>BIZ BILAN BOG‘LANING</h2>
+<p>☎ +998 50 704 80 61</p>
+<a class="btn" href="https://t.me/ilyosbek4028" target="_blank">Telegram</a>
+<a class="btn" href="https://www.instagram.com/zapchastchi.uz/" target="_blank">Instagram</a>
+</section>
+
+<footer>
+<p>© 2026 ZAPCHASTCHI.UZ</p>
+<p>Sifat va ishonch!</p>
+</footer>
+
+<script>
+let basket=[];
+
+function addCart(name){
+basket.push(name);
+showCart();
+}
+
+function showCart(){
+let area=document.getElementById('cart');
+if(basket.length===0){
+area.innerHTML='Savatcha hozircha bo‘sh.';
+return;
+}
+area.innerHTML=basket.map((item,i)=>
+'<p>'+(i+1)+'. '+item+'</p>'
+).join('')+'<b>Jami mahsulotlar: '+basket.length+'</b>';
+}
+
+function clearCart(){
+basket=[];
+showCart();
+}
+
+function searchProducts(){
+let q=document.getElementById('search').value.toLowerCase();
+document.querySelectorAll('.card').forEach(card=>{
+card.style.display=card.dataset.name.toLowerCase().includes(q)?'block':'none';
+});
+}
+
+function sendOrder(){
+if(basket.length===0){
+alert('Avval mahsulot tanlang!');
+return;
+}
+let message='Assalomu alaykum! ZAPCHASTCHI.UZ saytidan buyurtma:%0A';
+basket.forEach((item,i)=>{
+message+='%0A'+(i+1)+'. '+encodeURIComponent(item);
+});
+message+='%0A%0AIltimos, narxini va mavjudligini ayting.';
+window.open('https://t.me/ilyosbek4028?text='+message,'_blank');
+}
+</script>
+</body>
+</html>
+
 <footer>
 <p>© 2026 ZAPCHASTCHI.UZ</p>
 <p>Sifat va ishonch — bizning ustuvorligimiz!</p>
